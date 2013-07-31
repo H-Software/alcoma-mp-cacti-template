@@ -1,0 +1,89 @@
+<!--
+
+#########################################################################
+/   script alcoma_interface.xml for CACTI projects		        #
+/                                                                       #
+/   part of "Alcoma MP CACTI Template"                                  #
+/                                                                       #
+/   created by Patrik Majer (Kacer Huhu) - www.patrik-majer.net         #
+/                                                                       #
+/   version 0.1 - alpha - 2011-05-02                                    #
+/                                                                       #
+#########################################################################
+
+-->
+<interface>
+        <name>Get Host MIB Partitions</name>
+        <script_path>|path_php_binary| -q |path_cacti|/scripts/query_alcoma_interfaces.php</script_path>
+        <arg_prepend>|host_hostname| |host_id| |host_snmp_version|:|host_snmp_port|:|host_snmp_timeout|:|host_ping_retries|:|host_max_oids|:|host_snmp_community|:|host_snmp_username|:|host_snmp_password|:|host_snmp_auth_protocol|:|host_snmp_priv_passphrase|:|host_snmp_priv_protocol|:|host_snmp_context|</arg_prepend>
+        <arg_index>index</arg_index>
+        <arg_query>query</arg_query>
+        <arg_get>get</arg_get>
+        <arg_num_indexes>num_indexes</arg_num_indexes>
+        <output_delimeter>!</output_delimeter>
+        <index_order>ifIndex</index_order>
+        <index_order_type>numeric</index_order_type>
+        <index_title_format>|chosen_order_field|</index_title_format>
+        
+	<fields>
+               <ifIndex>
+                        <name>Index Number</name>
+                        <direction>input</direction>
+                        <query_name>index</query_name>
+                </ifIndex>
+               <ifName>
+                        <name>Name</name>
+                        <direction>input</direction>
+                        <query_name>name</query_name>
+                </ifName>
+                <ifOperStatus>
+                        <name>Status</name>
+                        <direction>input</direction>
+                        <query_name>status</query_name>
+                </ifOperStatus>
+                <ifType>
+                      <name>Type</name>
+                      <direction>input</direction>
+                      <query_name>type</query_name>                  
+    		</ifType>
+		<ifSpeed>
+                       <name>Speed</name>
+                      <direction>input</direction>
+                      <query_name>speed</query_name>           
+                </ifSpeed>
+    		<ifInOctets>
+            	      <name>Bytes In</name>
+                      <direction>output</direction>
+                      <query_name>bytes_in</query_name>        
+                </ifInOctets>
+                <ifOutOctets>
+                      <name>Bytes Out</name>
+                      <direction>output</direction>
+                      <query_name>bytes_out</query_name>                                                                                                                                             
+    		</ifOutOctets>
+    		
+                <ifInPkts>
+                        <name>Packets In</name>
+                        <direction>output</direction>
+                        <query_name>packets_in</query_name>
+                </ifInPkts>
+                <ifOutPkts>
+                        <name>Packets Out</name>
+                        <direction>output</direction>
+                        <query_name>packets_out</query_name>
+                </ifOutPkts>
+    		
+    		<ifErrors>
+                        <name>Errors count</name>
+                        <direction>output</direction>
+                        <query_name>error</query_name>
+                </ifErrors>
+    
+                <ifCollision>
+                        <name>Collision count</name>
+                        <direction>output</direction>
+                        <query_name>collision</query_name>
+                </ifCollision>
+
+	</fields>
+</interface>
